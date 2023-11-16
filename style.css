@@ -1,0 +1,191 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: #fff;
+  text-align: center;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+header,
+footer {
+  background-color: #333;
+  height: clamp(40px, 7rem, 25%);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main {
+  height: 100%;
+}
+
+/* book container */
+main .book-container {
+  overflow-x: auto;
+  color: #000;
+  height: 100%;
+  padding: 1rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+/* book card */
+.book-card {
+  flex: 0 0 auto;
+  width: min(300px, 30%);
+  height: max(150px, 50%);
+  padding: 2rem;
+  border-radius: 1rem;
+  border: 2px solid hsl(0, 0%, 50%);
+  box-shadow: 0 0 10px hsl(0, 0%, 50%);
+
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.book-card p {
+  font-size: 1.5rem;
+}
+
+.book-card button {
+  padding: 1em;
+  font-size: 1rem;
+  border-radius: 0.4rem;
+}
+
+/* dialog */
+dialog {
+  width: 30%;
+  padding: 1rem;
+  height: 50%;
+  border: none;
+  border-radius: 1rem;
+  background-color: #333;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+dialog .form-container {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.form-container .fa-xmark {
+  color: #fff;
+  font-size: 1rem;
+  width: 1rem;
+  height: 1rem;
+
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.form-container .fa-xmark:hover {
+  transform: translateX(1px) translateY(-4px);
+  top: 0;
+  right: 0;
+  font-size: 1.3rem;
+  transition: 100ms;
+}
+
+dialog form {
+  width: min(100%, 300px);
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+}
+
+form .input-label-container {
+  position: relative;
+}
+
+.input-label-container input {
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  padding-left: 1em;
+  width: 100%;
+  height: 3rem;
+  outline: none;
+}
+
+.input-label-container label {
+  font-size: 1rem;
+  position: absolute;
+  left: 0;
+  padding: 1em;
+  color: hsl(0, 0%, 50%);
+}
+
+.input-label-container input:valid ~ label,
+.input-label-container input:focus ~ label {
+  color: #fff;
+  padding: 0 1rem;
+  font-size: 0.7rem;
+  transform: translateX(1rem) translateY(-0.5rem);
+  background-color: #333;
+  border: 2px solid #fff;
+  border-block: none;
+  transition: 0.5s;
+}
+
+form .read-status {
+  padding: 1rem;
+  color: #fff;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+/* submit button */
+dialog button {
+  padding: 1em 4em;
+  border-radius: 10px;
+}
+
+/* dialog backdrop */
+dialog::backdrop {
+  background-color: #333;
+  opacity: 0.2;
+}
+
+/* add book button */
+.add-btn {
+  background-color: #fff;
+  margin: 1rem auto;
+  padding: 1em 1.5em;
+  border: none;
+  border-radius: 8px;
+  border: 2px solid hsl(0, 0%, 50%);
+}
+.add-btn:hover {
+  color: #fff;
+  background-color: #333;
+  transition: 0.2s;
+}

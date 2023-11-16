@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/fb4e5dd25b.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+    <title>My Library</title>
+  </head>
+  <body>
+    <header class="header">Library</header>
+    <main class="main">
+      <button class="add-btn">+ ADD NEW BOOK</button>
+      <dialog>
+        <div class="form-container">
+          <div class="close-dialog"><i class="fa-solid fa-xmark"></i></div>
+          <form action="" method="dialog">
+            <div class="book-info title input-label-container">
+              <input id="title" type="text" required />
+              <label for="title">Title</label>
+            </div>
+            <div class="book-info author input-label-container">
+              <input id="author" type="text" required />
+              <label for="author">Author</label>
+            </div>
+            <div class="book-info num-of-pages input-label-container">
+              <input id="num-of-pages" type="number" min="1" required />
+              <label for="num-of-pages">Pages</label>
+            </div>
+            <div class="book-info read-status">
+              <label for="read">I have read this book</label>
+              <input type="checkbox" id="read" />
+            </div>
+            <div class="submit-btn">
+              <button type="submit" class="close-modal-btn">submit</button>
+            </div>
+          </form>
+        </div>
+      </dialog>
+      <div class="book-container">
+        <!-- all book cards created via javascript here-->
+      </div>
+    </main>
+    <footer class="footer">
+      <script>
+        let date = new Date();
+        document.querySelector(".footer").textContent =
+          "Copyright © Ali " + " " + date.getFullYear();
+      </script>
+    </footer>
+  </body>
+</html>
