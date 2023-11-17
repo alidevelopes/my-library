@@ -64,9 +64,20 @@ main .book-container {
 }
 
 .book-card button {
+  border: none;
   padding: 1em;
   font-size: 1rem;
   border-radius: 0.4rem;
+}
+
+/* read not read toggle btn */
+.book-card .green-read-btn {
+  color: #fff;
+  background-color: hsl(120, 80%, 30%);
+}
+
+.book-card .red-not-read-btn {
+  background-color: hsl(0, 90%, 60%);
 }
 
 /* dialog */

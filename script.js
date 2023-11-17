@@ -1,15 +1,14 @@
 const bookContainer = document.querySelector(".book-container");
+const userFormInput = document.querySelectorAll("form input");
 const submitBtn = document.querySelector(".close-modal-btn");
+const xmark = document.querySelector(".fa-xmark ");
 const addBtn = document.querySelector(".add-btn");
 const dialog = document.querySelector("dialog");
-const xmark = document.querySelector(".fa-xmark ");
 const form = document.querySelector("form");
-const userFormInput = document.querySelectorAll("form input");
-// const allInputs = Array.from(userFormInput);
-// const checkBox = allInputs[allInputs.length - 1];
 
-// storing all book objects in myLibrary array
+const toggleReadBtn = document.createElement("button");
 const myLibrary = [];
+let readStatus;
 
 const title = document.getElementById("title");
 const author = document.getElementById("author");
@@ -29,12 +28,22 @@ function Book(title, author, numOfPages) {
 function addBookToLibrary() {
   const book = new Book(title, author, numOfPages);
   myLibrary.push(book);
-  // alert(checkBox.checked);
   if (checkFormValidity()) displayBookCard();
 }
 
 function displayBookCard() {
   const latestBookAdded = myLibrary[myLibrary.length - 1];
+  const bookCard = document.createElement("div");
+  bookCard.className = "book-card";
+  toggleReadBtn.textContent = readStatus;
+  toggleReadBtn.addEventListener("click", (e) => {
+    toggleReadBtn.classList.toggle("green-read-btn");
+    toggleReadBtn.classList.toggle("red-not-read-btn");
+    if (e.target.textContent === "Read") {
+      e.target.textContent = "Not Read";
+    } else e.target.textContent = "Read";
+  });
+  // add remove button in book
   const removeBtn = document.createElement("button");
   removeBtn.className = "remove-btn";
   removeBtn.textContent = "Remove Book";
@@ -42,19 +51,26 @@ function displayBookCard() {
     let removeBookCard = removeBtn.parentElement;
     bookContainer.removeChild(removeBookCard);
   });
-  const bookCard = document.createElement("div");
-  bookCard.className = "book-card";
   for (let info in latestBookAdded) {
     const bookDetail = document.createElement("p");
     bookDetail.textContent = latestBookAdded[info];
     bookCard.appendChild(bookDetail);
   }
+  bookCard.appendChild(toggleReadBtn);
   bookCard.appendChild(removeBtn);
   bookContainer.appendChild(bookCard);
 }
 
 function checkFormValidity() {
   let allInputs = Array.from(userFormInput);
+  const checkBox = allInputs[allInputs.length - 1];
+  if (checkBox.checked) {
+    toggleReadBtn.classList.add("green-read-btn");
+    readStatus = "Read";
+  } else {
+    toggleReadBtn.classList.add("red-not-read-btn");
+    readStatus = "Not read yet";
+  }
   let isFormValid = false;
   for (let i = 0; i < 3; i++) {
     if (allInputs[i].value === "") {
