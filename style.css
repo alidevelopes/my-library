@@ -117,11 +117,10 @@ dialog .form-container {
 }
 
 .form-container .fa-xmark:hover {
-  transform: translateX(1px) translateY(-4px);
   top: 0;
   right: 0;
-  font-size: 1.3rem;
-  transition: 100ms;
+  transform: scale(1.5);
+  transition: 300ms;
 }
 
 dialog form {

@@ -32,8 +32,10 @@ function addBookToLibrary() {
 }
 
 function displayBookCard() {
+  const bookCardId = myLibrary.length - 1;
   const latestBookAdded = myLibrary[myLibrary.length - 1];
   const bookCard = document.createElement("div");
+  bookCard.setAttribute("id", bookCardId);
   bookCard.className = "book-card";
   toggleReadBtn.textContent = readStatus;
   toggleReadBtn.addEventListener("click", (e) => {
@@ -48,9 +50,11 @@ function displayBookCard() {
   removeBtn.className = "remove-btn";
   removeBtn.textContent = "Remove Book";
   removeBtn.addEventListener("click", () => {
+    myLibrary.splice(bookCardId, 1);
     let removeBookCard = removeBtn.parentElement;
     bookContainer.removeChild(removeBookCard);
   });
+
   for (let info in latestBookAdded) {
     const bookDetail = document.createElement("p");
     bookDetail.textContent = latestBookAdded[info];
