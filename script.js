@@ -16,6 +16,13 @@ let checkBox = document.getElementById("checkbox");
 submitBtn.addEventListener("click", () => addBookToLibrary());
 addBtn.addEventListener("click", () => dialog.showModal());
 xmark.addEventListener("click", () => dialog.close());
+form.addEventListener("submit", (event) => {
+  if (!checkFormValidity) {
+    event.preventDefault();
+  } else if (parseInt(allInputs[2].value) < 1) {
+    event.preventDefault();
+  } else displayBookCard();
+});
 
 // Book Constructor
 function Book(title, author, numOfPages, readStatus) {
@@ -29,7 +36,6 @@ function Book(title, author, numOfPages, readStatus) {
 function addBookToLibrary() {
   const book = new Book(title, author, numOfPages, checkBox);
   myLibrary.push(book);
-  if (checkFormValidity()) displayBookCard();
 }
 
 // create and display book card
@@ -39,7 +45,6 @@ function displayBookCard() {
   const bookCardId = myLibrary.length - 1;
   bookCard.setAttribute("id", bookCardId);
   bookCard.className = "book-card";
-  // add remove button in book
   const readStatusBtn = document.createElement("button");
   readStatusBtn.addEventListener("click", () => {
     if (readStatusBtn.textContent === "Read") {
@@ -80,7 +85,7 @@ function displayBookCard() {
 
 function checkFormValidity() {
   let isFormValid = false;
-  for (let i = 0; i < 3; i++) {
+  for (let i = 0; i < 2; i++) {
     if (allInputs[i].value === "") {
       isFormValid = false;
       return;
